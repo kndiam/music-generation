@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'theme_manager.dart';
+import 'package:adaptive_theme/adaptive_theme.dart';
+
 class SettingsPage extends StatelessWidget {
   const SettingsPage({Key? key}) : super(key: key);
 
@@ -12,15 +12,12 @@ class SettingsPage extends StatelessWidget {
         child: Column(
           children: [
             const Text('Theme Settings'),
-            Switch(
-              value: Provider.of<ThemeManager>(context).isDark,
-              onChanged: (value) {
-                Provider.of<ThemeManager>(context, listen: false).toggleTheme();
-              },
+            IconButton(
+              onPressed: (){AdaptiveTheme.of(context).toggleThemeMode();},
+              icon: const Icon(Icons.light_mode))
+            ]
             ),
-          ],
         ),
-      ),
-    );
+      );
   }
 }

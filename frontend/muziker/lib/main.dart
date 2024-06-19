@@ -1,39 +1,30 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'theme_manager.dart';
 import 'login.dart';
 import 'home.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  ThemeManager themeManager = await ThemeManager.loadPreferences();
-  runApp(MyApp(themeManager: themeManager));
+void main() {
+  runApp(MyApp());
 }
 
-
 class MyApp extends StatelessWidget {
-  final ThemeManager themeManager;
-
-  MyApp({required this.themeManager});
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<ThemeManager>(
-      create: (_) => themeManager,
-
-      
-      child: Consumer<ThemeManager>(
-        builder: (context, theme, _) => MaterialApp(
-          title: 'My App',
-          theme: theme.themeData,
-          initialRoute: '/login',
+    return AdaptiveTheme(
+      light: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.purple, brightness: Brightness.light),
+      dark: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.purple, brightness: Brightness.dark),
+      initial: AdaptiveThemeMode.system,
+      builder: (theme, darkTheme) => MaterialApp(
+        title: 'Muziker',
+        theme: theme,
+        darkTheme: darkTheme,
+        initialRoute: '/login',
           routes: {
             '/login': (context) => LoginPage(),
             '/home': (context) => HomePage(),
           },
-        ),
       ),
-      
     );
   }
 }

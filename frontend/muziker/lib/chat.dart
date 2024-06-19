@@ -10,34 +10,15 @@ import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:mime/mime.dart';
+import 'package:muziker/main.dart';
 import 'package:open_filex/open_filex.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:uuid/uuid.dart';
-import 'theme_manager.dart';
-import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  ThemeManager themeManager = await ThemeManager.loadPreferences();
-  runApp(MyApp(themeManager: themeManager));
-  initializeDateFormatting().then((_) => runApp(MyApp(themeManager: themeManager)));
-}
-
-class MyApp extends StatelessWidget {
-  final ThemeManager themeManager;
-  MyApp({required this.themeManager});
-
-  Widget build(BuildContext context) {
-    return ChangeNotifierProvider<ThemeManager>(
-      create: (_) => themeManager,
-      child: Consumer<ThemeManager>(
-        builder: (context, theme, _) => MaterialApp(
-          theme: theme.themeData,
-          home: ChatPage(),
-        ),
-      ),
-    );
-  }
+  runApp(MyApp());
+  initializeDateFormatting().then((_) => runApp(MyApp()));
 }
 
 class ChatPage extends StatefulWidget {
@@ -237,24 +218,6 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) {
-    // Accessing the current theme data from ThemeManager
-    final themeManager = Provider.of<ThemeManager>(context);
-    final chatTheme = DefaultChatTheme(
-
-      inputBackgroundColor: themeManager.themeData.inputDecorationTheme.fillColor ?? Color(0xFF7B2CBF)!,
-      backgroundColor: themeManager.themeData.scaffoldBackgroundColor,
-      sentMessageBodyTextStyle: TextStyle(color: themeManager.themeData.colorScheme.onPrimary),
-      sentMessageCaptionTextStyle: TextStyle(color: themeManager.themeData.colorScheme.onPrimary),
-      sentMessageDocumentIconColor: themeManager.themeData.primaryColor,
-      primaryColor: themeManager.themeData.primaryColor,
-      secondaryColor: themeManager.themeData.colorScheme.secondary,
-      receivedMessageBodyTextStyle: TextStyle(color: Colors.white),
-      receivedMessageCaptionTextStyle: TextStyle(color: themeManager.themeData.colorScheme.onSecondary),
-      receivedMessageDocumentIconColor: themeManager.themeData.colorScheme.inverseSurface,
-      inputTextColor: Colors.white,
-      inputTextCursorColor: themeManager.themeData.primaryColor, dateDividerTextStyle:TextStyle(color: Colors.white)
-    );
-
     return Scaffold(
       appBar: AppBar(title: const Text('Muziker')),
       body: Chat(
@@ -266,7 +229,6 @@ class _ChatPageState extends State<ChatPage> {
         showUserAvatars: true,
         showUserNames: true,
         user: _user,
-        theme: chatTheme,
       ),
     );
   }

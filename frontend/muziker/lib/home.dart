@@ -45,14 +45,6 @@ class HomePage extends StatelessWidget {
                   'Generate',
                   style: TextStyle(fontSize: 16),  // Larger text size
                 ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF4D057A),  // Set uniform color
-                  foregroundColor: Colors.white,  // Text color
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),  // Rounded corners
-                  ),
-                  elevation: 10,  // Shadow elevation
-                ),
               ),
             ),
             SizedBox(height: 10),
@@ -66,14 +58,6 @@ class HomePage extends StatelessWidget {
                 child: const Text(
                   'Library',
                   style: TextStyle(fontSize: 16),  // Larger text size
-                ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF4D057A),  // Set uniform color
-                  foregroundColor: Colors.white,  // Text color
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),  // Rounded corners
-                  ),
-                  elevation: 10,  // Shadow elevation
                 ),
               ),
             ),

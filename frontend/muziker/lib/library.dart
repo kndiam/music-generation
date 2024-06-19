@@ -23,35 +23,32 @@ class LibraryPage extends StatelessWidget {
             child: TextField(
               decoration: InputDecoration(
                 hintText: "What kind of music will you make?",
-                hintStyle: TextStyle(color: Colors.white54),
                 filled: true,
-                fillColor: Colors.white24,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
                   borderSide: BorderSide.none,
                 ),
-                prefixIcon: Icon(Icons.search, color: Colors.white),
+                prefixIcon: Icon(Icons.search),
               ),
-              style: TextStyle(color: Colors.white),
             ),
           ),
           Expanded(
             child: ListView(
               children: [
                 ListTile(
-                  leading: Icon(Icons.music_note, color: Colors.purpleAccent),
-                  title: Text('Sunset Vibes, Latin', style: TextStyle(color: Colors.white)),
-                  trailing: Icon(Icons.favorite_border, color: Colors.purpleAccent),
+                  leading: Icon(Icons.music_note),
+                  title: Text('Sunset Vibes, Latin'),
+                  trailing: Icon(Icons.favorite_border),
                 ),
                 ListTile(
-                  leading: Icon(Icons.music_note, color: Colors.purpleAccent),
-                  title: Text('More Drums', style: TextStyle(color: Colors.white)),
-                  trailing: Icon(Icons.favorite_border, color: Colors.purpleAccent),
+                  leading: Icon(Icons.music_note),
+                  title: Text('More Drums'),
+                  trailing: Icon(Icons.favorite_border),
                 ),
                 ListTile(
-                  leading: Icon(Icons.music_note, color: Colors.purpleAccent),
-                  title: Text('Smoother, more synths', style: TextStyle(color: Colors.white)),
-                  trailing: Icon(Icons.favorite_border, color: Colors.purpleAccent),
+                  leading: Icon(Icons.music_note),
+                  title: Text('Smoother, more synths'),
+                  trailing: Icon(Icons.favorite_border),
                 ),
               ],
             ),
@@ -59,7 +56,6 @@ class LibraryPage extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: Color(0xFF240046), // Slightly lighter background for the player controls
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(10),
                 topRight: Radius.circular(10),
@@ -68,9 +64,9 @@ class LibraryPage extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Icon(Icons.skip_previous, color: Colors.purpleAccent, size: 36),
-                Icon(Icons.play_arrow, color: Colors.purpleAccent, size: 36),
-                Icon(Icons.skip_next, color: Colors.purpleAccent, size: 36),
+                Icon(Icons.skip_previous),
+                Icon(Icons.play_arrow),
+                Icon(Icons.skip_next),
                 // Include a custom icon for music wave here
                 Container(
                   height: 50,
