@@ -37,9 +37,9 @@ class _LoginPageState extends State<LoginPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
 
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
             Image.asset('assets/logo.png'),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             SignInButton(
               Buttons.Google,
               text: "Sign in with Google",
@@ -47,8 +47,8 @@ class _LoginPageState extends State<LoginPage> {
             ),
             SizedBox(height: 20),
             ElevatedButton.icon(
-              icon: Icon(signal_wifi_connected_no_internet_4_rounded),
-              label: Text('Go Offline'),
+              icon: Icon(Icons.arrow_forward),
+              label: Text('Continue as Guest'),
               onPressed: _goOffline,
             ),
           ],

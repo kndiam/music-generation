@@ -14,6 +14,18 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final double buttonWidth = MediaQuery.of(context).size.width * 0.95 ;
     return Scaffold(
+      appBar: AppBar(title: const Text("Home"),
+      actions: <Widget>[
+                IconButton(onPressed: (){
+                  Navigator.pushNamed(context, '/login');                
+                  }, 
+                icon: const Icon(Icons.logout)),
+                IconButton(onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingsPage()));               
+                  }, 
+                icon: const Icon(Icons.settings)),
+              ],
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -66,25 +78,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 10),
-            SizedBox(
-              width: buttonWidth,
-              height: buttonHeight,
-              child: ElevatedButton.icon(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingsPage()));
-                },
-                icon: Icon(Icons.settings, size: 20),  // Larger icon size
-                label: const Text(''),  // No text
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF4D057A),  // Set uniform color
-                  foregroundColor: Colors.white,  // Text color
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),  // Rounded corners
-                  ),
-                  elevation: 10,  // Shadow elevation
-                ),
-              ),
-            ),
+            
           ],
         ),
       ),

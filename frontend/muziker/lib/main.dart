@@ -10,6 +10,7 @@ void main() async {
   runApp(MyApp(themeManager: themeManager));
 }
 
+
 class MyApp extends StatelessWidget {
   final ThemeManager themeManager;
 
@@ -19,17 +20,20 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<ThemeManager>(
       create: (_) => themeManager,
+
+      
       child: Consumer<ThemeManager>(
         builder: (context, theme, _) => MaterialApp(
           title: 'My App',
           theme: theme.themeData,
-          initialRoute: '/',
+          initialRoute: '/login',
           routes: {
-            '/': (context) => LoginPage(),
+            '/login': (context) => LoginPage(),
             '/home': (context) => HomePage(),
           },
         ),
       ),
+      
     );
   }
 }
